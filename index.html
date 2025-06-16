@@ -3,6 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <title>Zamini File Manager v1.0.0</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <!-- End Google Analytics -->
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      line-height: 1.5;
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 0.5em;
+    }
+    h2, h3 {
+      color: #333;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 0.7em;
+      font-size: 1.1em;
+    }
+    a {
+      text-decoration: none;
+      color: #007acc;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    small {
+      color: #555;
+      font-size: 0.9em;
+    }
+    hr {
+      margin: 2em 0;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+
 </head>
 <body>
 
@@ -42,6 +95,22 @@
   To test with real data, delete that folder and extract the <strong>Sample Folder & Read Me</strong> (file.rar) into the same directory.
 </p>
 </small>
+
+<script>
+  // Track clicks on download links for GA4 events
+  document.addEventListener('DOMContentLoaded', function () {
+    const downloadLinks = document.querySelectorAll('a[download]');
+    downloadLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        gtag('event', 'download', {
+          'event_category': 'File',
+          'event_label': link.href,
+          'transport_type': 'beacon'
+        });
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
